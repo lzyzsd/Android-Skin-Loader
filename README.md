@@ -1,18 +1,35 @@
 # Android-Skin-Loader 
 
-> Contact Me : fengjun.dev@gmail.com
+> 联系我 : fengjun.dev@gmail.com  
+> 
+> 个人博客 : [http://allenfeng.com/](http://allenfeng.com/)
 >
 > 一个通过动态加载本地皮肤包进行换肤的皮肤框架
 
 ## 更新日志
-- 添加在代码中创建的View的换肤支持 (2015-09-24)
+- 导入到Android Studio，使用gradle构建皮肤包（见`7. 皮肤包是什么？如何生成？`）(2015-12-02)
+- 解决Fragment换肤在某些版本的support-v4包下失效的问题（感谢@javake同学）(2015-12-02)
 - 对`textColor`加入selector类型的资源的换肤支持(感谢@pinotao同学) （2015-09-26）
+- 添加在代码中创建的View的换肤支持 (2015-09-24)
+
+## 工程目录介绍
+```
+Android-Skin-Loader
+├── android-skin-loader-lib      // 皮肤加载库
+├── android-skin-loader-sample   // 皮肤库应用实例
+├── android-skin-loader-skin     // 皮肤包生成demo
+└── skin-package                 // 皮肤包输出目录
+```
 
 
 ## 演示
-#### 1. 下载[demo](https://github.com/fengjundev/Android-Skin-Loader/tree/master/apk), 将`BlackFantacy.skin`放在SD卡根目录
+#### 1. 下载[demo](https://github.com/fengjundev/Android-Skin-Loader/tree/master/skin-package), 将`BlackFantacy.skin`放在SD卡根目录
 #### 2. 效果图
-![sample](https://raw.githubusercontent.com/fengjundev/Android-Skin-Loader/master/sample/image/screenshot.png)
+- 换肤前
+![sample](./screenshot/demo1.gif)
+
+- 换肤后
+![sample](./screenshot/demo2.gif)
 
 
 ## 用法
@@ -102,6 +119,7 @@ public interface IDynamicNewView {
 #### 7. 皮肤包是什么？如何生成？
 - 皮肤包（后缀名为`.skin`）的本质是一个apk文件，该apk文件不包含代码，只包含资源文件
 - 在皮肤包工程中（示例工程为`skin/BlackFantacy`）添加需要换肤的同名的资源文件，直接编译生成apk文件，再更改后缀名为`.skin`即可（防止用户点击安装）
+- 使用gradle的同学，build`android-skin-loader-skin`工程后即可在`skin-package`目录下取皮肤包（修改脚本中`def skinName = "BlackFantacy.skin"`换成自己想要的皮肤名）
 
 
 ---
@@ -122,5 +140,4 @@ public interface IDynamicNewView {
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
 
